@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "b81e4cec-9a30-468c-b85b-a0969e8fa5cb",
+		"name": "PhotoTraveller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/posts/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxS3dhdHkybmprZWsiLCJpYXQiOjE1OTMzNzA0MjAsImV4cCI6MTU5MzQ2MDQyMH0.Pi8b1JxH8hyGKrPdnCykiwqiDCZr3f3x8jhnKzVFV3We3CGPrres_-vmCJ_pfNjygM618mU0fuj3bV5oNEEBe7GPP5HyluuZVDDHe2n0ZWOIAkoJk1wzpNqNgv1Titxnp2gzs6tFhXAIyAqZ2nK-yi8erQtOwzV6mn8I5VAi8cn7V87vrpHPFcNO4jkVP-yMRp70oW7xoDODHw0eTO0IVEXv7oFJLiRdE8hLGSIqVi0rwvrZLfd-ywc8YZVVRNQvfLHc-GPGTglfVRblwms1N7HpHNnUNV1SUbeK2h_10Y3gHQU1rDtD49dBxjM75phsOympm-zo-VuNlZr4kuNvHQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subredditName\":\"DomkiDominki\",\r\n    \"postNAme\":\"xd\",\r\n    \"url\":\"https://google.com\",\r\n    \"description\":\"desc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/posts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"user123\",\n\t\"email\":\"krystianw.e.t@gmail.com\",\n\t\"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Rejestracja"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"user123\",\n\t\"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Logowanie po potwierdzeniu maila"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/photos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxS3dhdHkybmprZWsiLCJpYXQiOjE1OTM0MjA0NzEsImV4cCI6MTU5MzUxMDQ3MX0.AqJwi6a1B-pl8JHx9WSk_hj7oYDs17i8WRhFVdS2OMRTlk1DPxhXN2qYgX5NwgypZKnIilfoEvp79rFjVD3MHgXCbympTqKXy7UkkzgOlY9k5eV3rY_yXpyrj7zS0lWEsfyXlZc-1nwOtyXE2IpI_3b_GOSI6nPalvedxyM81FcsTa1INojQX2mRvh8S7ZPX9b2p7rmKDHxav1fLv-JeoIhaZCXyCWW6hPi23F48D2XOtm6PZAWUffa93LA2MucJDm1tHevNZJ2-u-QO8Eg5Jc0UD_l3fOYkATZZpPPJo32gSZ1-Xg0U8f4g9uuCHNzOiePYdB4X0u9cv5LFF3vQsw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\":\"Nowy Photos\",\r\n        \"description\":\"Pierwszy Photos wykorzystany pozniej do dodania do niego postu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photos"
+					]
+				},
+				"description": "Dodanie Photos"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxS3dhdHkybmprZWsiLCJpYXQiOjE1OTMzNjkxODYsImV4cCI6MTU5MzQ1OTE4Nn0.IAkGTK7iMwpVuTn12CRb7oESrZPMgpUnxrLuabI6j4IcAS6F4MLfUt7Drnp8NWT2D6DkIq15lhESP7alRgD66vIQj3ifJ3ybq9tnJh_Hhlo0MBdfAjwPIme_zC02gkJoU_xaw7lwyu3S6H0iYuTB3S2_AIVD3er_Mbwjm13oxxSxQKbUpGp6sAO6mOZR6S2otDDdalzGnsox7t-fa8ICrYWYJoM84wOSKbMWnOWB1xrdsUoEznCQUE-OXfrH0aGYvTr5JqrXlUCNvunLp1vKfOwhKrWv7oxAoqEGzHqaF4ETbdkIY7il7LuOKLEKLBRycFXHhLQ86RkXGHGokH6oYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"photosName\":\"Nowy Photos\",\n    \"postName\":\"Nowy Post\",\n    \"url\":\" \",\n    \"description\":\"Opis ( jeśli na dole widać błąd jest to stara odpowiedz - miałem literowke w requescie\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/posts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						""
+					]
+				},
+				"description": "Dodawanie Postu"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/photos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxS3dhdHkybmprZWsiLCJpYXQiOjE1OTMzNjk0OTcsImV4cCI6MTU5MzQ1OTQ5N30.A2YXYeLKVOViz9TQ2DbdO8LuGjG-oztocT5JBPJYjBt9PZMIkTiA5tVRa8j5z7NGv_qtvGe-PdlX4g8m6lijwe-HNhmfzrAoIYnljIsvQvAVW431lcD2cX4HrgPH3LGAmpgJ5hAHubmb0oH_GGxvpiFxcp8V6GipN_SH1tHJP4FSTNwf3ldDVbl9ZpzNlVFrlDI179mhmG8KgBWU5j0KzZyQ8YvRfg9zSW3lh_BDY8BX3JxcEDPAiDO1UPir5FxOVQNo6iZVJrzWuzf47F3aOwobF8KdryBwh6yJifMcVoTYWqBugQNsR3shB1s984k1HwdHvUH2GRt7qUqaANuxUA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"photos"
+					]
+				},
+				"description": "Wyświetla liste Photos"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subredditName\":\"First Subreddit\",\r\n    \"postName\":\"First Post for Youtube Tutorial\",\r\n    \"url\":\"https://google.com\",\r\n    \"description\":\"Description Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts"
+					]
+				},
+				"description": "Wyświetla listę postów"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/comments/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\":1,\r\n    \"text\":\"FIRST!!!1\",\r\n    \"userName\":\"user123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						""
+					]
+				},
+				"description": "Dodanie komentarza do postu"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/comments/by-post/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/comments/by-post/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"by-post",
+						"1"
+					]
+				},
+				"description": "Sprawdzanie komentarzy po poscie"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/comments/by-user/user123",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/comments/by-user/user123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"by-user",
+						"user123"
+					]
+				},
+				"description": "Sprawdzanie komentarzy po użytkowniku"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/votes/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"voteType\":\"DOWNVOTE\",\r\n    \"postId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/votes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"votes",
+						""
+					]
+				},
+				"description": "Oddanie głosu \"-\""
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
