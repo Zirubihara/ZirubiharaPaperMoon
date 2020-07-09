@@ -50,9 +50,9 @@ public class AuthService {
         userRepository.save(user);
 
         String token = generateVerificationToken(user);
-        mailService.sendMail(new NotificationEmail("Please Activate your Account",
-                user.getEmail(), "Thank you for signing up to Spring Photo Traveller, " +
-                "please click on the below url to activate your Photo Traveller account : " +
+        mailService.sendMail(new NotificationEmail("Proszę aktywować swoje konto!",
+                user.getEmail(), "Dziękujemy za rejestrację! Aby móc korzystać z konta, " +
+                "musisz je aktywować klikając w ten link : " +
                 "http://localhost:8080/api/auth/accountVerification/" + token));
     }
 
@@ -61,12 +61,12 @@ public class AuthService {
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
         return userRepository.findByUsername(principal.getUsername())
-                .orElseThrow(() -> new UsernameNotFoundException("User name not found - " + principal.getUsername()));
+                .orElseThrow(() -> new UsernameNotFoundException("Nie znaleziono użytkownika - " + principal.getUsername()));
     }
 
     private void fetchUserAndEnable(VerificationToken verificationToken) {
         String username = verificationToken.getUser().getUsername();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringPhotoTravellerException("User not found with name - " + username));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringPhotoTravellerException("Nie znaleziono użytkownika - " + username));
         user.setEnabled(true);
         userRepository.save(user);
     }
@@ -83,7 +83,7 @@ public class AuthService {
 
     public void verifyAccount(String token) {
         Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
-        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringPhotoTravellerException("Invalid Token")));
+        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringPhotoTravellerException("Niewłaściwy token")));
     }
 
     public AuthenticationResponse login(LoginRequest loginRequest) {

@@ -3,6 +3,7 @@ package com.zirubihara.phototraveller.phototraveller.service;
 import com.zirubihara.phototraveller.phototraveller.exceptions.PostNotFoundException;
 import com.zirubihara.phototraveller.phototraveller.exceptions.PhotostNotFoundException;
 import com.zirubihara.phototraveller.phototraveller.mapper.PostMapper;
+import com.zirubihara.phototraveller.phototraveller.model.Category;
 import com.zirubihara.phototraveller.phototraveller.model.Photos;
 import com.zirubihara.phototraveller.phototraveller.model.User;
 import com.zirubihara.phototraveller.phototraveller.repository.PostRepository;
@@ -35,14 +36,14 @@ public class PostService {
 
     public void save(PostRequest postRequest) {
         Photos photos = photosRepository.findByName(postRequest.getPhotosName())
-                .orElseThrow(() -> new PhotostNotFoundException(postRequest.getPhotosName()));
+                .orElseThrow(() -> new PhotostNotFoundException(postRequest.getPostId()));
         postRepository.save(postMapper.map(postRequest, photos, authService.getCurrentUser()));
     }
 
     @Transactional(readOnly = true)
     public PostResponse getPost(Long id) {
         Post post = postRepository.findById(id)
-                .orElseThrow(() -> new PostNotFoundException(id.toString()));
+                .orElseThrow(() -> new PostNotFoundException(id));
         return postMapper.mapToDto(post);
     }
 
@@ -57,7 +58,7 @@ public class PostService {
     @Transactional(readOnly = true)
     public List<PostResponse> getPostsByPhotos(Long photosId) {
         Photos photos = photosRepository.findById(photosId)
-                .orElseThrow(() -> new PhotostNotFoundException(photosId.toString()));
+                .orElseThrow(() -> new PhotostNotFoundException(photosId));
         List<Post> posts = postRepository.findAllByPhotos(photos);
         return posts.stream().map(postMapper::mapToDto).collect(toList());
     }

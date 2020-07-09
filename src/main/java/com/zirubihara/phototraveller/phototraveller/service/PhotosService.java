@@ -39,7 +39,7 @@ public class PhotosService {
 
     public PhotosDto getPhotos(Long id) {
         Photos photos = photosRepository.findById(id)
-                .orElseThrow(() -> new SpringPhotoTravellerException("No photos found with ID - " + id));
+                .orElseThrow(() -> new SpringPhotoTravellerException("Nie odnaleziono Photosa o ID  - " + id));
         return photosMapper.mapPhotosToDto(photos);
     }
 }

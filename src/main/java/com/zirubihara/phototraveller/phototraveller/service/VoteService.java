@@ -25,13 +25,13 @@ public class VoteService {
     @Transactional
     public void vote(VoteDto voteDto) {
         Post post = postRepository.findById(voteDto.getPostId())
-                .orElseThrow(() -> new PostNotFoundException("Post Not Found with ID - " + voteDto.getPostId()));
+                .orElseThrow(() -> new PostNotFoundException(voteDto.getPostId()));
         Optional<Vote> voteByPostAndUser = voteRepository.findTopByPostAndUserOrderByVoteIdDesc(post, authService.getCurrentUser());
         if (voteByPostAndUser.isPresent() &&
                 voteByPostAndUser.get().getVoteType()
                         .equals(voteDto.getVoteType())) {
-            throw new SpringPhotoTravellerException("You have already "
-                    + voteDto.getVoteType() + "'d for this post");
+            throw new SpringPhotoTravellerException("Już zagłosowałeś na  "
+                    + voteDto.getVoteType() + " dla tego postu!");
         }
         if (VoteType.UPVOTE.equals(voteDto.getVoteType())) {
             post.setVoteCount(post.getVoteCount() + 1);

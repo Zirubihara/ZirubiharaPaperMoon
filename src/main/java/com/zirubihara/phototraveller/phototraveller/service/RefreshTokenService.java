@@ -27,7 +27,7 @@ public class RefreshTokenService {
 
     void validateRefreshToken(String token) {
         refreshTokenRepository.findByToken(token)
-                .orElseThrow(() -> new SpringPhotoTravellerException("Invalid refresh Token"));
+                .orElseThrow(() -> new SpringPhotoTravellerException("Niepoprawny refresh Token"));
     }
 
     public void deleteRefreshToken(String token) {

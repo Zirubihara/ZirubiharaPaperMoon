@@ -1,0 +1,7 @@
+POST http://localhost:8080/categories
+Content-Type: application/pt.app-v1.0+json
+
+{"name": "Kasnek", "description": "Krystian", "createdDate": ""}
+
+
+###
