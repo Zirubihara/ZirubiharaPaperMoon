@@ -75,4 +75,23 @@ public class PostController {
         return CollectionModel.of(posts,
                 linkTo(methodOn(PhotosController.class).all()).withSelfRel());
     }
+
+    @PostMapping(path = "/nowa", produces = "application/pt.app-v1.1+json" )
+    ResponseEntity<EntityModel<Post>> newPost(@RequestBody Post post) {
+
+        Post newPost = postRepository.save(post);
+
+        return ResponseEntity
+                .created(linkTo(methodOn(PostController.class).one(newPost.getPostId())).toUri())
+                .body(postModelAssembler.toModel(newPost));
+    }
+
+    @DeleteMapping(path = "/del")
+    ResponseEntity<?> deletePost(@PathVariable Long id) {
+        postRepository.deleteById(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

@@ -15,7 +15,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "USER")
+@Table(name = "USER")
 public class User {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "user_seq")
@@ -24,7 +24,7 @@ public class User {
     private Long userId;
 
     @Column(name = "USERNAME", length = 5)
-    //@Size(min = 5, max = 20, message = "Niepoprawna długość nazwy użytkownika")
+    @Size(min = 5, max = 20, message = "Niepoprawna długość nazwy użytkownika")
     @Min(7)
     @NotBlank(message = "Username is required")
     private String username;
