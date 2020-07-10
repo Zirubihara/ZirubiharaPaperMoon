@@ -16,6 +16,8 @@ public interface PhotosMapper {
     PhotosDto mapPhotosToDto(Photos photos);
 
     default Integer mapPosts(List<Post> numberOfPosts) {
+        System.out.println("Cyc");
+        System.out.println(numberOfPosts);
         return numberOfPosts.size();
     }
 

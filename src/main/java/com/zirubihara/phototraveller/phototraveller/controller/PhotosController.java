@@ -30,13 +30,13 @@ public class PhotosController {
     private final PhotosRepository photosRepository;
     private final PhotosModelAssembler photosModelAssembler;
 
-    @PostMapping(produces = "application/pt.app-v1.0+json")
+    @PostMapping()
     public ResponseEntity<PhotosDto> createPhotos(@RequestBody PhotosDto photosDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(photosService.save(photosDto));
     }
 
-    @GetMapping(produces = "application/pt.app-v1.0+json")
+    @GetMapping()
     public ResponseEntity<List<PhotosDto>> getAllPhotos() {
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -58,7 +58,7 @@ public class PhotosController {
         return photosModelAssembler.toModel(photos);
     }
 
-    @GetMapping(produces = "application/pt.app-v1.1+json")
+    @GetMapping(path = "/new" , produces = "application/pt.app-v1.1+json")
     public CollectionModel<EntityModel<Photos>> all() {
         List<EntityModel<Photos>> photos = photosRepository.findAll().stream()
                 .map(photosModelAssembler::toModel)
