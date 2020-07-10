@@ -38,7 +38,7 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping(value = "get", produces = "application/vnd.company.app-v1+json")
     public ResponseEntity<List<PostResponse>> getAllPosts() {
         return status(HttpStatus.OK).body(postService.getAllPosts());
     }
@@ -58,7 +58,7 @@ public class PostController {
         return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
     }
 
-    @GetMapping(produces = "application/pt.app-v1.1+json")
+    @GetMapping(path = "/id", produces = "application/pt.app-v1.1+json")
     public EntityModel<Post> one(@PathVariable Long id){
         Post post = postRepository.findById(id)
                 .orElseThrow(() ->  new PostNotFoundException(id));
@@ -66,7 +66,7 @@ public class PostController {
         return postModelAssembler.toModel(post);
     }
 
-    @GetMapping(path = "/all", produces = "application/pt.app-v1.1+json" )
+    @GetMapping(value = "get", produces = "application/vnd.company.app-v2+json")
     public CollectionModel<EntityModel<Post>> all() {
         List<EntityModel<Post>> posts = postRepository.findAll().stream()
                 .map(postModelAssembler::toModel)

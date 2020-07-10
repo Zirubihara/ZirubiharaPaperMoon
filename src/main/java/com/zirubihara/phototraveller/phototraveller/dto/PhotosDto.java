@@ -14,5 +14,5 @@ public class PhotosDto {
     private String name;
     private String description;
     private Integer numberOfPosts;
-    //private Integer numberOfPosts2;
+    private Integer numberOfPosts2;
 }
