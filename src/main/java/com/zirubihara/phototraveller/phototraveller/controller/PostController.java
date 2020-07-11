@@ -32,28 +32,28 @@ public class PostController {
     private final PostRepository postRepository;
     private final PostModelAssembler postModelAssembler;
 
-    @PostMapping
+    @PostMapping(produces = "application/pt.app-v1.0+json")
     public ResponseEntity<Void> createPost(@RequestBody PostRequest postRequest) {
         postService.save(postRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "get", produces = "application/vnd.company.app-v1+json")
+    @GetMapping(produces = "application/pt.app-v1.0+json")
     public ResponseEntity<List<PostResponse>> getAllPosts() {
         return status(HttpStatus.OK).body(postService.getAllPosts());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = "application/pt.app-v1.0+json")
     public ResponseEntity<PostResponse> getPost(@PathVariable Long id) {
         return status(HttpStatus.OK).body(postService.getPost(id));
     }
 
-    @GetMapping("by-photos/{id}")
+    @GetMapping(value = "by-photos/{id}", produces = "application/pt.app-v1.0+json")
     public ResponseEntity<List<PostResponse>> getPostsByPhotos(Long id) {
         return status(HttpStatus.OK).body(postService.getPostsByPhotos(id));
     }
 
-    @GetMapping("by-user/{name}")
+    @GetMapping(value = "by-user/{name}", produces = "application/pt.app-v1.0+json")
     public ResponseEntity<List<PostResponse>> getPostsByUsername(String username) {
         return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
     }
@@ -66,7 +66,7 @@ public class PostController {
         return postModelAssembler.toModel(post);
     }
 
-    @GetMapping(value = "get", produces = "application/vnd.company.app-v2+json")
+    @GetMapping(produces = "application/pt.app-v1.1+json")
     public CollectionModel<EntityModel<Post>> all() {
         List<EntityModel<Post>> posts = postRepository.findAll().stream()
                 .map(postModelAssembler::toModel)
@@ -76,7 +76,7 @@ public class PostController {
                 linkTo(methodOn(PhotosController.class).all()).withSelfRel());
     }
 
-    @PostMapping(path = "/nowa", produces = "application/pt.app-v1.1+json" )
+    @PostMapping(produces =  "application/pt.app-v1.1+json" )
     ResponseEntity<EntityModel<Post>> newPost(@RequestBody Post post) {
 
         Post newPost = postRepository.save(post);
@@ -86,7 +86,7 @@ public class PostController {
                 .body(postModelAssembler.toModel(newPost));
     }
 
-    @DeleteMapping(path = "/del")
+    @DeleteMapping(path = "/{id}", produces = "application/pt.app-v1.1+json")
     ResponseEntity<?> deletePost(@PathVariable Long id) {
         postRepository.deleteById(id);
 

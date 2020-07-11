@@ -30,13 +30,13 @@ public class PhotosController {
     private final PhotosRepository photosRepository;
     private final PhotosModelAssembler photosModelAssembler;
 
-    @PostMapping()
+    @PostMapping(produces = "application/pt.app-v1.0+json")
     public ResponseEntity<PhotosDto> createPhotos(@RequestBody PhotosDto photosDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(photosService.save(photosDto));
     }
 
-    @GetMapping()
+    @GetMapping(produces = "application/pt.app-v1.0+json")
     public ResponseEntity<List<PhotosDto>> getAllPhotos() {
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -58,7 +58,7 @@ public class PhotosController {
         return photosModelAssembler.toModel(photos);
     }
 
-    @GetMapping(path = "/new" , produces = "application/pt.app-v1.1+json")
+    @GetMapping(produces = "application/pt.app-v1.1+json")
     public CollectionModel<EntityModel<Photos>> all() {
         List<EntityModel<Photos>> photos = photosRepository.findAll().stream()
                 .map(photosModelAssembler::toModel)
@@ -68,17 +68,17 @@ public class PhotosController {
                 linkTo(methodOn(com.zirubihara.phototraveller.phototraveller.controller.PhotosController.class).all()).withSelfRel());
     }
 
-//    @PostMapping(produces = "application/pt.app-v1.0+json")
-//    ResponseEntity<EntityModel<Photos>> newPhotos(@RequestBody Photos photos) {
-//
-//        Photos newPhotos = photosRepository.save(photos);
-//
-//        return ResponseEntity
-//                .created(linkTo(methodOn(com.zirubihara.phototraveller.phototraveller.controller.PhotosController.class).one(newPhotos.getId())).toUri())
-//                .body(photosModelAssembler.toModel(newPhotos));
-//    }
-//
-    @DeleteMapping(path = "/{id}")
+    @PostMapping(produces = "application/pt.app-v1.1+json")
+    ResponseEntity<EntityModel<Photos>> newPhotos(@RequestBody Photos photos) {
+
+        Photos newPhotos = photosRepository.save(photos);
+
+        return ResponseEntity
+                .created(linkTo(methodOn(com.zirubihara.phototraveller.phototraveller.controller.PhotosController.class).one(newPhotos.getId())).toUri())
+                .body(photosModelAssembler.toModel(newPhotos));
+    }
+
+    @DeleteMapping(path = "/{id}", produces = "application/pt.app-v1.1+json")
     ResponseEntity<?> deletePhotos(@PathVariable Long id) {
         photosRepository.deleteById(id);
 
