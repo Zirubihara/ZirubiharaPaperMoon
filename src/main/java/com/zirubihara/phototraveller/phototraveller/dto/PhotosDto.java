@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,5 +16,5 @@ public class PhotosDto {
     private String name;
     private String description;
     private Integer numberOfPosts;
-    private Integer numberOfPosts2;
+    private Instant createdDate;
 }

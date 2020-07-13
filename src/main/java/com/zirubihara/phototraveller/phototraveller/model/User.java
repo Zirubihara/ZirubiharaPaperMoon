@@ -23,17 +23,19 @@ public class User {
     @NotNull
     private Long userId;
 
-    @Column(name = "USERNAME", length = 5)
+    @Column(name = "USERNAME", unique = true)
     @Size(min = 5, max = 20, message = "Niepoprawna długość nazwy użytkownika")
-    @Min(7)
     @NotBlank(message = "Username is required")
     private String username;
 
     @NotBlank(message = "Password is required")
     private String password;
+
     @Email
     @NotEmpty(message = "Email is required")
     private String email;
+
     private Instant created;
+
     private boolean enabled;
 }

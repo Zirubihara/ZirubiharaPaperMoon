@@ -12,12 +12,14 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PhotosMapper {
 
+
     @Mapping(target = "numberOfPosts", expression = "java(mapPosts(photos.getPosts()))")
     PhotosDto mapPhotosToDto(Photos photos);
 
     default Integer mapPosts(List<Post> numberOfPosts) {
         return numberOfPosts.size();
     }
+    @Mapping(target = "createdDate", expression = "java(java.time.Instant.now())")
 
     @InheritInverseConfiguration
     @Mapping(target = "posts", ignore = true)

@@ -24,6 +24,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Table(name = "POST")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "post_seq")
     @SequenceGenerator(name = "post_seq", sequenceName = "post_seq", allocationSize = 1)
@@ -33,7 +34,7 @@ public class Post {
 
     @Column(name = "POSTNAME", unique = true)
     @Size(min = 2, max = 30, message = "Nieoprawna długość nazwy posta")
-    @NotBlank(message = "Post Name cannot be empty or Null")
+    @NotBlank(message = "Nazwa postu nie może być pusta!")
     private String postName;
 
     @Column(name = "URL")
@@ -46,13 +47,16 @@ public class Post {
     @Lob
     private String description;
 
+
     private Integer voteCount = 0;
 
 
     @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private User user;
+
     private Instant createdDate;
+
     @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Photos photos;
