@@ -28,9 +28,9 @@ public class Comment {
     @Column(name = "ID", unique = true)
     private Long id;
 
-    @Size(min = 1, max = 30)
+    @Size(min = 3, max = 400, message = "Komentarz powinien zawierać od 3 do 400 zanków")
     @NotEmpty
-    @Column(name = "NAME", unique = true)
+    @Column(name = "TEXT", unique = true)
     private String text;
 
 

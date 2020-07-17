@@ -4,4 +4,10 @@ Content-Type: application/pt.app-v1.0+json
 {"name": "Kasnek", "description": "Krystian", "createdDate": ""}
 
 
+
 ###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{"username":"asdas678678678d"," password":"asdasd"}

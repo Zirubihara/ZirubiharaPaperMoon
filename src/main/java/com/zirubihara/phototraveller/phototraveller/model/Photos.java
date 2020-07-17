@@ -33,12 +33,12 @@ public class Photos {
     private Long id;
 
     @Column(name = "NAME", unique = true)
-    @Size(min = 5, max = 40, message = "Nieoprawna długość")
+    @Size(min = 5, max = 40, message = "Nazwa powinna zawierać od 5 do 40 znaków")
     @NotBlank(message = "Name is required")
     private String name;
 
     @Column(name = "DESCRIPTION")
-    @Size(min = 10, max = 500, message = "Niepoprawna długość opisu")
+    @Size(min = 10, max = 500, message = "Opis powinien zawierać od 10 do 500 zanków")
     @NotBlank(message = "Description is required")
     private String description;
 

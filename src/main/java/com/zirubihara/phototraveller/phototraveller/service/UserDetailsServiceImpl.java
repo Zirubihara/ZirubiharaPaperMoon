@@ -15,6 +15,10 @@ import java.util.Collection;
 import java.util.Optional;
 
 import static java.util.Collections.singletonList;
+import java.util.Collection;
+import java.util.Optional;
+
+import static java.util.Collections.singletonList;
 
 @Service
 @AllArgsConstructor
@@ -26,8 +30,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         Optional<User> userOptional = userRepository.findByUsername(username);
         User user = userOptional
-                .orElseThrow(() -> new UsernameNotFoundException("Brak użytkownika" +
-                        "Nie znaleziono użtkownika o nazwie : " + username));
+                .orElseThrow(() -> new UsernameNotFoundException("No user " +
+                        "Found with username : " + username));
 
         return new org.springframework.security
                 .core.userdetails.User(user.getUsername(), user.getPassword(),

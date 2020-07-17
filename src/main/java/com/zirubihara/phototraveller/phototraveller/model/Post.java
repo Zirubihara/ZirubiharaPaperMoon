@@ -33,8 +33,8 @@ public class Post {
     private Long postId;
 
     @Column(name = "POSTNAME", unique = true)
-    @Size(min = 2, max = 30, message = "Nieoprawna długość nazwy posta")
-    @NotBlank(message = "Nazwa postu nie może być pusta!")
+    @Size(min = 2, max = 30, message = "Nazwa posta powinna zawieraćod 2 do 30 znaków")
+    @NotBlank(message = "Nazwa posta niepowinna być pusta")
     private String postName;
 
     @Column(name = "URL")
@@ -42,8 +42,8 @@ public class Post {
     private String url;
 
     @Column(name = "DESCRIPTION")
-    @Size(min = 10, max = 500, message = "Niepoprawna długość opisu")
-    @Nullable
+    @Size(min = 10, max = 500, message = "Nazwa opisu powinna mieć od 10 do 500 zanków")
+    @NotNull(message = "Nazwa posta nie powinna być pusta")
     @Lob
     private String description;
 
