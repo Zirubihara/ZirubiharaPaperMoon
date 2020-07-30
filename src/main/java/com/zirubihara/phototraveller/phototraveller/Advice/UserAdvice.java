@@ -13,7 +13,7 @@ import java.time.Instant;
 public class UserAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> exceptionHandling(MethodArgumentNotValidException e){
-        ValidationErrorsDetails validationErrorsDetails = new ValidationErrorsDetails(Instant.now(),"Błąd formularza : ", e.getBindingResult().getFieldError().getDefaultMessage());
+        ValidationErrorsDetails validationErrorsDetails = new ValidationErrorsDetails(Instant.now(),"Błąd formularza", e.getBindingResult().getFieldError().getDefaultMessage());
         return new ResponseEntity<>(validationErrorsDetails, HttpStatus.BAD_REQUEST);
     }
 }
