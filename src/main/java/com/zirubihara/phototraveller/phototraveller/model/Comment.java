@@ -24,13 +24,10 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_seq")
     @SequenceGenerator(name = "comment_seq", sequenceName = "comment_seq", allocationSize = 1)
-    @NotNull
-    @Column(name = "ID", unique = true)
+    @Column(name = "ID", unique = true, nullable = false)
     private Long id;
 
-    @Size(min = 3, max = 400, message = "Komentarz powinien zawierać od 3 do 400 zanków")
-    @NotEmpty
-    @Column(name = "TEXT", unique = true)
+    @Column(name = "TEXT", unique = true, nullable = false, length = 200)
     private String text;
 
 
@@ -42,6 +39,6 @@ public class Comment {
     private Instant createdDate;
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
 }

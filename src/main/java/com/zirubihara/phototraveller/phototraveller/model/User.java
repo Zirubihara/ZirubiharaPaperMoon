@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.Instant;
 
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @AllArgsConstructor
@@ -18,16 +16,25 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "USER")
 public class User {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
+    @Column(name = "USER_ID", unique = true, nullable = false)
     private Long userId;
-    @NotBlank(message = "Username is required")
+
+    @Column(name = "USERNAME", nullable = false, length = 20)
     private String username;
-    @NotBlank(message = "Password is required")
+
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
+
     @Email
-    @NotEmpty(message = "Email is required")
+    @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "CREATED")
     private Instant created;
+
+    @Column(name = "ENABLED")
     private boolean enabled;
 
     //    @Id

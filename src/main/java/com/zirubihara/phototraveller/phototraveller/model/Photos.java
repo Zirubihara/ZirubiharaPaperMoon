@@ -28,18 +28,13 @@ public class Photos {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "photos_seq")
     @SequenceGenerator(name = "photos_seq", sequenceName = "photos_seq", allocationSize = 1)
-    @Column(name = "ID", unique = true)
-    @NotNull
+    @Column(name = "ID", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "NAME", unique = true)
-    @Size(min = 5, max = 40, message = "Nazwa powinna zawierać od 5 do 40 znaków")
-    @NotBlank(message = "Name is required")
+    @Column(name = "NAME", unique = true, length = 40, nullable = false)
     private String name;
 
-    @Column(name = "DESCRIPTION")
-    @Size(min = 10, max = 500, message = "Opis powinien zawierać od 10 do 500 zanków")
-    @NotBlank(message = "Description is required")
+    @Column(name = "DESCRIPTION", length = 500, nullable = false)
     private String description;
 
     @OneToMany(fetch = EAGER, cascade = {CascadeType.ALL})

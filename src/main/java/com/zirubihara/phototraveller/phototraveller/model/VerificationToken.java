@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.Instant;
 
 import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @AllArgsConstructor
@@ -18,10 +18,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class VerificationToken {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE, generator = "verification_token_seq")
+    @SequenceGenerator(name = "verification_token_seq", sequenceName = "verification_token_seq", allocationSize = 1)
+    @Column(name = "ID", unique = true, nullable = false)
     private Long id;
+
+    @Column(name = "TOKEN")
     private String token;
+
     @OneToOne(fetch = LAZY)
     private User user;
+
+    @Column(name = "EXPIRY_DATE")
     private Instant expiryDate;
 }

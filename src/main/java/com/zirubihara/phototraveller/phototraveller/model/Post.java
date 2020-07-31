@@ -28,8 +28,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "post_seq")
     @SequenceGenerator(name = "post_seq", sequenceName = "post_seq", allocationSize = 1)
-    @Column(name = "POSTID", unique = true)
-    @NotNull
+    @Column(name = "POSTID", unique = true, nullable = false)
     private Long postId;
 
     @Column(name = "POSTNAME", unique = true)
@@ -52,7 +51,7 @@ public class Post {
 
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
 
     private Instant createdDate;
