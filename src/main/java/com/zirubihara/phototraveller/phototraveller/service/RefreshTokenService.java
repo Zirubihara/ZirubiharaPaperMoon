@@ -1,8 +1,8 @@
 package com.zirubihara.phototraveller.phototraveller.service;
 
-import com.zirubihara.phototraveller.phototraveller.repository.RefreshTokenRepository;
 import com.zirubihara.phototraveller.phototraveller.exceptions.SpringPhotoTravellerException;
 import com.zirubihara.phototraveller.phototraveller.model.RefreshToken;
+import com.zirubihara.phototraveller.phototraveller.repository.RefreshTokenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

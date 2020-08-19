@@ -1,15 +1,15 @@
 package com.zirubihara.phototraveller.phototraveller.service;
 
+import com.zirubihara.phototraveller.phototraveller.dto.CommentsDto;
 import com.zirubihara.phototraveller.phototraveller.exceptions.PostNotFoundException;
 import com.zirubihara.phototraveller.phototraveller.mapper.CommentMapper;
+import com.zirubihara.phototraveller.phototraveller.model.Comment;
 import com.zirubihara.phototraveller.phototraveller.model.NotificationEmail;
+import com.zirubihara.phototraveller.phototraveller.model.Post;
 import com.zirubihara.phototraveller.phototraveller.model.User;
 import com.zirubihara.phototraveller.phototraveller.repository.CommentRepository;
 import com.zirubihara.phototraveller.phototraveller.repository.PostRepository;
 import com.zirubihara.phototraveller.phototraveller.repository.UserRepository;
-import com.zirubihara.phototraveller.phototraveller.dto.CommentsDto;
-import com.zirubihara.phototraveller.phototraveller.model.Comment;
-import com.zirubihara.phototraveller.phototraveller.model.Post;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

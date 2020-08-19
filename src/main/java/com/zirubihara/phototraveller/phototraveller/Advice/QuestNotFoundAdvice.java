@@ -13,5 +13,7 @@ public class QuestNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler()
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String PostNotFoundHandler(PostNotFoundException ex){ return ex.getMessage();}
+    String PostNotFoundHandler(PostNotFoundException ex) {
+        return ex.getMessage();
+    }
 }

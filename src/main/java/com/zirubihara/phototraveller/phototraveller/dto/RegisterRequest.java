@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
+
     private String email;
     @Size(min = 4, max = 20, message = "Niepoprawna długość nazwy użytkownika")
     private String username;

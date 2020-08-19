@@ -51,7 +51,7 @@ public class PhotosController {
     }
 
     @GetMapping(path = "/{id}", produces = "application/pt.app-v1.1+json")
-    public EntityModel<Photos> one(@PathVariable Long id){
+    public EntityModel<Photos> one(@PathVariable Long id) {
         Photos photos = photosRepository.findById(id)
                 .orElseThrow(() -> new PhotostNotFoundException(id));
 

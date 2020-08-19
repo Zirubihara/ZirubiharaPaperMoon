@@ -16,7 +16,7 @@ public class PhotosDto {
     private Long id;
     @Size(min = 5, max = 40, message = "Nazwa powinna zawierać od 5 do 40 znaków")
     private String name;
-    @Size(min = 10, max = 500, message = "Opis powinien zawierać od 10 do 500 zanków")
+    @Size(min = 10, max = 500, message = "Opis powinien zawierać od 10 do 500 znaków")
     private String description;
     private Integer numberOfPosts;
     private Instant createdDate;

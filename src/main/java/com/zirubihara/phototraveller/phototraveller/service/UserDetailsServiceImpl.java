@@ -15,10 +15,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 import static java.util.Collections.singletonList;
-import java.util.Collection;
-import java.util.Optional;
-
-import static java.util.Collections.singletonList;
 
 @Service
 @AllArgsConstructor

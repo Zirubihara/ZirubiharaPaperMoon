@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class PhotosNotFoundAdvice {
+
     @ResponseBody
     @ExceptionHandler()
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String PhotosNotFoundHandler(PhotostNotFoundException ex) {return ex.getMessage();}
+    String PhotosNotFoundHandler(PhotostNotFoundException ex) {
+        return ex.getMessage();
+    }
 
 }

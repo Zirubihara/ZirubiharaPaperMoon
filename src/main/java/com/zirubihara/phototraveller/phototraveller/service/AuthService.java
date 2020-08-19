@@ -1,7 +1,5 @@
 package com.zirubihara.phototraveller.phototraveller.service;
 
-import com.zirubihara.phototraveller.phototraveller.repository.VerificationTokenRepository;
-import com.zirubihara.phototraveller.phototraveller.security.JwtProvider;
 import com.zirubihara.phototraveller.phototraveller.dto.AuthenticationResponse;
 import com.zirubihara.phototraveller.phototraveller.dto.LoginRequest;
 import com.zirubihara.phototraveller.phototraveller.dto.RefreshTokenRequest;
@@ -11,6 +9,8 @@ import com.zirubihara.phototraveller.phototraveller.model.NotificationEmail;
 import com.zirubihara.phototraveller.phototraveller.model.User;
 import com.zirubihara.phototraveller.phototraveller.model.VerificationToken;
 import com.zirubihara.phototraveller.phototraveller.repository.UserRepository;
+import com.zirubihara.phototraveller.phototraveller.repository.VerificationTokenRepository;
+import com.zirubihara.phototraveller.phototraveller.security.JwtProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
