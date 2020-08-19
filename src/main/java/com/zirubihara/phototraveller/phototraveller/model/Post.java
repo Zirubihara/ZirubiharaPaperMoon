@@ -36,13 +36,10 @@ public class Post {
     @NotBlank(message = "Nazwa posta niepowinna być pusta")
     private String postName;
 
-    @Column(name = "URL")
-    @Nullable
+    @Column(name = "URL", nullable = false)
     private String url;
 
-    @Column(name = "DESCRIPTION")
-    @Size(min = 10, max = 500, message = "Nazwa opisu powinna mieć od 10 do 500 zanków")
-    @NotNull(message = "Nazwa posta nie powinna być pusta")
+    @Column(name = "DESCRIPTION", nullable = false, length = 500)
     @Lob
     private String description;
 
