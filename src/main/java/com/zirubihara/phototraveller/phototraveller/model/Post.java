@@ -31,9 +31,7 @@ public class Post {
     @Column(name = "POSTID", unique = true, nullable = false)
     private Long postId;
 
-    @Column(name = "POSTNAME", unique = true)
-    @Size(min = 2, max = 30, message = "Nazwa posta powinna zawieraćod 2 do 30 znaków")
-    @NotBlank(message = "Nazwa posta niepowinna być pusta")
+    @Column(name = "POSTNAME", unique = true, length = 30, nullable = false)
     private String postName;
 
     @Column(name = "URL", nullable = false)
