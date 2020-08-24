@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
+
     List<Post> findAllByPhotos(Photos photos);
 
     List<Post> findByUser(User user);
