@@ -2,6 +2,7 @@ package com.zirubihara.phototraveller.phototraveller.service;
 
 import com.zirubihara.phototraveller.phototraveller.dto.CommentsDto;
 import com.zirubihara.phototraveller.phototraveller.exceptions.PostNotFoundException;
+import com.zirubihara.phototraveller.phototraveller.exceptions.SpringPhotoTravellerException;
 import com.zirubihara.phototraveller.phototraveller.mapper.CommentMapper;
 import com.zirubihara.phototraveller.phototraveller.model.Comment;
 import com.zirubihara.phototraveller.phototraveller.model.NotificationEmail;
@@ -38,6 +39,12 @@ public class CommentService {
 
         String message = mailContentBuilder.build(post.getUser().getUsername() + " skomentował twój post." + POST_URL);
         sendCommentNotification(message, post.getUser());
+    }
+
+    public CommentsDto getComment(Long id) {
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new SpringPhotoTravellerException("Nie odnaleziono komentarza o ID - " + id));
+        return commentMapper.mapToDto(comment);
     }
 
     private void sendCommentNotification(String message, User user) {
