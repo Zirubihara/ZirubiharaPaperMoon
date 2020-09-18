@@ -4,17 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.Instant;
-
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
@@ -37,11 +30,11 @@ public class Post {
     @Column(name = "URL", nullable = false)
     private String url;
 
-    @Column(name = "DESCRIPTION", nullable = false, length = 500)
     @Lob
+    @Column(name = "DESCRIPTION", nullable = false, length = 500)
     private String description;
 
-
+    @Column(name = "VOTE_COUNT")
     private Integer voteCount = 0;
 
 
@@ -49,6 +42,7 @@ public class Post {
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
 
+    @Column(name = "CREATED_DATE")
     private Instant createdDate;
 
     @ManyToOne(fetch = EAGER)
