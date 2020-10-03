@@ -1,7 +1,6 @@
 package com.zirubihara.phototraveller.phototraveller.controller;
 
 import com.zirubihara.phototraveller.phototraveller.Assembler.CommentsModelAssembler;
-import com.zirubihara.phototraveller.phototraveller.Assembler.PhotosModelAssembler;
 import com.zirubihara.phototraveller.phototraveller.dto.CommentsDto;
 import com.zirubihara.phototraveller.phototraveller.exceptions.CommentNotFoundException;
 import com.zirubihara.phototraveller.phototraveller.model.Comment;
