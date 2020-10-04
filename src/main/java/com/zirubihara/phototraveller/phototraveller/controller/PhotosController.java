@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class PhotosController {
     private final PhotosModelAssembler photosModelAssembler;
 
     @PostMapping(produces = "application/pt.app-v1.0+json")
-    public ResponseEntity<PhotosDto> createPhotos(@RequestBody PhotosDto photosDto) {
+    public ResponseEntity<PhotosDto> createPhotos(@Valid @RequestBody PhotosDto photosDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(photosService.save(photosDto));
     }

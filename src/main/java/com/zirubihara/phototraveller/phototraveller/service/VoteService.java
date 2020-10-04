@@ -27,9 +27,10 @@ public class VoteService {
         Post post = postRepository.findById(voteDto.getPostId())
                 .orElseThrow(() -> new PostNotFoundException(voteDto.getPostId()));
         Optional<Vote> voteByPostAndUser = voteRepository.findTopByPostAndUserOrderByVoteIdDesc(post, authService.getCurrentUser());
-        if (voteByPostAndUser.isPresent() &&
-                voteByPostAndUser.get().getVoteType()
-                        .equals(voteDto.getVoteType())) {
+       if (voteByPostAndUser.isPresent()
+//              &&  voteByPostAndUser.get().getVoteType()
+//                        .equals(voteDto.getVoteType())
+                        ) {
             throw new SpringPhotoTravellerException("Już zagłosowałeś na  "
                     + voteDto.getVoteType() + " dla tego postu!");
         }

@@ -40,6 +40,9 @@ public class Photos {
     @OneToMany(fetch = EAGER, cascade = {CascadeType.ALL})
     private List<Post> posts;
 
+    @Column(name = "NUMBER_OF_POSTS")
+    private Integer numberOfPosts;
+
     @Column(name = "CREATED_DATE")
     private Instant createdDate;
 

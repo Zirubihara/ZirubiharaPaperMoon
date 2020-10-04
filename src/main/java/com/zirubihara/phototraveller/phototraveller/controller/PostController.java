@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class PostController {
     private final PostModelAssembler postModelAssembler;
 
     @PostMapping(produces = "application/pt.app-v1.0+json")
-    public ResponseEntity<Void> createPost(@RequestBody PostRequest postRequest) {
+    public ResponseEntity<Void> createPost(@Valid @RequestBody PostRequest postRequest) {
         postService.save(postRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -42,17 +43,17 @@ public class PostController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/pt.app-v1.0+json")
-    public ResponseEntity<PostResponse> getPost(@PathVariable Long id) {
+    public ResponseEntity<PostResponse> getPost(@Valid @PathVariable Long id) {
         return status(HttpStatus.OK).body(postService.getPost(id));
     }
 
     @GetMapping(value = "by-photos/{id}", produces = "application/pt.app-v1.0+json")
-    public ResponseEntity<List<PostResponse>> getPostsByPhotos(Long id) {
+    public ResponseEntity<List<PostResponse>> getPostsByPhotos(@PathVariable Long id) {
         return status(HttpStatus.OK).body(postService.getPostsByPhotos(id));
     }
 
     @GetMapping(value = "by-user/{name}", produces = "application/pt.app-v1.0+json")
-    public ResponseEntity<List<PostResponse>> getPostsByUsername(String username) {
+    public ResponseEntity<List<PostResponse>> getPostsByUsername(@PathVariable String username) {
         return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
     }
 
@@ -75,7 +76,7 @@ public class PostController {
     }
 
     @PostMapping(produces =  "application/pt.app-v1.1+json" )
-    ResponseEntity<EntityModel<Post>> newPost(@RequestBody Post post) {
+    ResponseEntity<EntityModel<Post>> newPost(@Valid @RequestBody Post post) {
 
         Post newPost = postRepository.save(post);
 
